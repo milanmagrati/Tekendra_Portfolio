@@ -30,13 +30,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // ===== Photos Floating Animation (safe small movement) =====
-  document.querySelectorAll(".photo-card").forEach((card) => {
-    const duration = Math.random() * 6 + 3;   // 4s - 8s
-    const distance = Math.random() * 15 + 20;  // small (mobile safe)
-
-    card.style.animation = `float ${duration}s ease-in-out infinite alternate`;
-    card.style.setProperty("--float-distance", `${distance}px`);
+  // ===== Photos Floating Animation =====
+  const photoCards = document.querySelectorAll(".photo-card");
+  
+  photoCards.forEach((card, index) => {
+    // Random duration between 3-6 seconds
+    const duration = Math.random() * 3 + 3;
+    
+    // Apply animation with staggered delay
+    card.style.animation = `floatUp ${duration}s ease-in-out infinite`;
+    card.style.animationDelay = `${index * 0.1}s`;
   });
 
 });
